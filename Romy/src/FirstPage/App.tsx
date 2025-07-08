@@ -18,11 +18,12 @@ function App() {
        animate={{ opacity: 1, y: 0 }}     // arrive au centre
        exit={{ opacity: 0, y: -100 }}      // sort vers le bas
        transition={{ duration: 0.5 }}>
+
       <div className="flex">
         <Link to="/about" >
           <img src={icons8} className="logo" alt="Icons8 logo" />
         </Link>
-        <a href="https://react.dev" target="_blank">
+        <a href="CreationCompte" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>

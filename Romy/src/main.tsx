@@ -7,6 +7,10 @@ import HomePage from './HomePage/HomePage.tsx'
 import { AnimatePresence } from 'framer-motion'
 import SeconePage from './SecondePage/SeconePage.tsx'
 import ThirdePage from './ThirdePage/ThirdePage.tsx'
+import Conversation from './Conversation/CNV.tsx'
+import Connexion from './Connexion/Connexion.tsx'
+import Reconnexion from './Reconnexion/Reconnexion.tsx'
+import CreationCompte from './CreationCompte/CreationCompte.tsx'
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -18,6 +22,7 @@ function AnimatedRoutes() {
         <Route path="/about" element={<HomePage />} />
           <Route path="/SeconePage" element={<SeconePage />} />
           <Route path="/ThirdePage" element={<ThirdePage />} />
+          <Route path="/CreationCompte" element={<CreationCompte />} />
       </Routes>
     </AnimatePresence>
   )
