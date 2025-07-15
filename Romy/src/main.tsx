@@ -11,6 +11,7 @@ import Conversation from './Conversation/CNV.tsx'
 import Connexion from './Connexion/Connexion.tsx'
 import Reconnexion from './Reconnexion/Reconnexion.tsx'
 import CreationCompte from './CreationCompte/CreationCompte.tsx'
+import Map from './Map/Map.tsx'
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -22,7 +23,7 @@ function AnimatedRoutes() {
         <Route path="/about" element={<HomePage />} />
           <Route path="/SeconePage" element={<SeconePage />} />
           <Route path="/ThirdePage" element={<ThirdePage />} />
-          <Route path="/CreationCompte" element={<CreationCompte />} />
+          <Route path="/Map" element={<Map />} />
       </Routes>
     </AnimatePresence>
   )

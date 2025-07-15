@@ -23,9 +23,10 @@ function App() {
         <Link to="/about" >
           <img src={icons8} className="logo" alt="Icons8 logo" />
         </Link>
-        <a href="CreationCompte" target="_blank">
+        <Link to="/Map">
           <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        </Link>
+
       </div>
       <h1>Home + Romy</h1>
       <div className="card">
