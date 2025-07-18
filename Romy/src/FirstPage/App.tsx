@@ -23,7 +23,7 @@ function App() {
         <Link to="/about" >
           <img src={icons8} className="logo" alt="Icons8 logo" />
         </Link>
-        <a href="CreationCompte" target="_blank">
+        <a href="Connexion" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
