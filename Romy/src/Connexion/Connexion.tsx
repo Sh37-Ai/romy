@@ -42,8 +42,13 @@ function Connexion() {
              <button onClick={handleLogin}>Connexion</button>
           </div>
           <div className="button-group">
-                <button type="button">Mot de passe oublié ?</button>
-                <button type="button">Créer un compte</button>
+
+                <Link to="/Reconnexion">
+                  <button type="button"  >Mot de passe oublié ?</button>
+                </Link>
+                <Link to="/CreationCompte">
+                  <button type="button">Créer un compte</button>
+                </Link>
           </div>
        </div>
 
