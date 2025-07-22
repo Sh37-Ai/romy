@@ -28,6 +28,7 @@ function AnimatedRoutes() {
           <Route path="/Connexion" element={<Connexion />} />
           <Route path="/CreationCompte" element={<CreationCompte />} />
           <Route path="/Reconnexion" element={<Reconnexion />} />
+          <Route path="/Conversation" element={<Conversation />} />
       </Routes>
     </AnimatePresence>
   )

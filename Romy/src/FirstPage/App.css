@@ -45,7 +45,14 @@
 .flex {
   display: flex;
 
+
   gap: 30px;
   padding-left: 60px;
+}
+
+.Back {
+  background-color: #77bcdd;
+  width: 100%;
+
 }
 
