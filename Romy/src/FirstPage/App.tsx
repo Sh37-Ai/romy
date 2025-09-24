@@ -14,20 +14,20 @@ function App() {
 
   return (
     < motion.div
-       initial={{ opacity: 0, y: 100 }} // commence en haut
-       animate={{ opacity: 1, y: 0 }}     // arrive au centre
-       exit={{ opacity: 0, y: -100 }}      // sort vers le bas
+       initial={{ opacity: 0, y: 100 }}
+       animate={{ opacity: 1, y: 0 }}
+       exit={{ opacity: 0, y: -100 }}
        transition={{ duration: 0.5 }}>
 
         <div className="flex">
          <Link to="/about" >
            <img src={icons8} className="logo" alt="Icons8 logo" />
          </Link>
-         <a href="Connexion" target="_blank">
+         <a href="FirstImage" target="_blank">
            <img src={reactLogo} className="logo react" alt="React logo" />
          </a>
        </div>
-       <h1> <Link to="/about">Home</Link> + <Link to="/Connexion">Romy</Link>  </h1>
+       <h1> <Link to="/about">Home</Link> + <Link to="/FirstImage">Romy</Link>  </h1>
        <div className="card">
          <button onClick={() => setCount((count) => count + 1)}>
            Visits : {count}
@@ -36,7 +36,7 @@ function App() {
              Health care is so important for you and your family        </p>
        </div>
        <p className="read-the-docs">
-        Speak with Romy, and she can describe your situation and give advice.
+        Pass a test with Romy, and she can describe your situation and give advice.
        </p>
 
      </motion.div>

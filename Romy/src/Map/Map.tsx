@@ -4,11 +4,27 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { db } from "../Firebase";
 import { doc, setDoc } from "firebase/firestore";
+import img from "../assets/img_11.png";
+import img1 from "../assets/img_12.png";
 
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
   iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+});
+
+const customIcon = new L.Icon({
+  iconUrl: img, // chemin vers ton image
+  iconSize: [32, 32], // taille de l’icône
+  iconAnchor: [16, 32], // point d’ancrage (bas de l’icône)
+  popupAnchor: [0, -32], // position du popup
+});
+
+const customIcoon = new L.Icon({
+  iconUrl: img1, // chemin vers ton image
+  iconSize: [32, 32], // taille de l’icône
+  iconAnchor: [16, 32], // point d’ancrage (bas de l’icône)
+  popupAnchor: [0, -32], // position du popup
 });
 
 // Marqueur Casablanca
@@ -54,9 +70,9 @@ function MapPage() {
 
           }
 
-      alert("Bien enregistrer");
+
       }catch(error){
-          alert("problème ");
+
           console.log("erreur")
           }
       }
@@ -104,14 +120,14 @@ function MapPage() {
         />
 
         {/* Marqueur pour Casablanca */}
-        <Marker position={casablancaCoords}>
-          <Popup>Casablanca</Popup>
+        <Marker position={casablancaCoords} icon={customIcon}>
+          <Popup>Notre Partenaire</Popup>
         </Marker>
 
         {/* Marqueur position actuelle */}
         {userCoords && (
           <>
-            <Marker position={userCoords}>
+            <Marker position={userCoords} icon={customIcoon}>
               <Popup>Vous êtes ici</Popup>
             </Marker>
             <RecenterMap coords={userCoords} />

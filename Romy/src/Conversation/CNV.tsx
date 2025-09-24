@@ -5,6 +5,7 @@ import { option } from 'framer-motion/m';
 
 
 function CNV() {
+
   const [userInput, setUserInput] = useState('');
   const [messages, setMessages] = useState([
     { sender: 'romy', text: "Je suis Romy ton assistante. Comment vas-tu aujourd'hui ?" }
@@ -129,7 +130,7 @@ function CNV() {
             type="text"
             value={userInput}
             placeholder="Écrivez ici..."
-            onChange={e => setUserInput(e.target.value)} // ici aussi il y avait une faute : `onChage` → `onChange`
+            onChange={e => setUserInput(e.target.value)}
           />
           <button onClick={()=> {discusion();filtrage();} }>Envoyer</button>
         </div>

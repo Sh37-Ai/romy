@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./Romy
+    ports:
+      - "8080:80"    # front accessible sur http://localhost:8080
+    depends_on:
+      - backend
+
+  backend:
+    build: ./TestIARumy
+    ports:
+      - "5000:8000"  # Host 5000 -> Container 8000
+    volumes:
+      - ./TestIARumy:/app
+

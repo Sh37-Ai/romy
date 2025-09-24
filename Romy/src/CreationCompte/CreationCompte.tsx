@@ -6,6 +6,8 @@ import { createUserWithEmailAndPassword, fetchSignInMethodsForEmail } from "fire
 import { doc, setDoc } from "firebase/firestore";
 import './CreationCompte.css'
 import { Link } from "react-router-dom";
+import { useChoices } from '../ChoiceContext/ChoiceContext.tsx';
+import { useNavigate } from 'react-router-dom';
 
 function CreationCompte() {
   const [email, setEmail] = useState('');
@@ -19,6 +21,9 @@ function CreationCompte() {
   const [message1, setMessage1] = useState('');
   const [situation, setSituation] = useState(true);
   const [situation1, setSituation1] = useState(false);
+  const [userr , SetUserr] = useState(null);
+  const { choices, addChoice, resetChoices } = useChoices();
+  const navigate = useNavigate();
 
   const checkPassword = () => {
     if (password !== password1) {
@@ -59,6 +64,7 @@ function CreationCompte() {
     try {
       const Newuser = await createUserWithEmailAndPassword(auth, email, password);
       const user = Newuser.user;
+      setUserr(user);
       await setDoc(doc(db, "Users", user.uid), {
         nom,
         prenom,
@@ -74,12 +80,34 @@ function CreationCompte() {
     }
   }
 
+  const handleCreateAndSave = async () => {
+  await CreatUser();  // créer l'utilisateur
+  await Sauvgerder(); // sauvegarder les choix
+  navigate("/Map");   // ensuite naviguer
+};
+
+  const Sauvgerder = async () => {
+    if (!choices) return;
+    try {
+      await addDoc(doc(db, "choixxx",userr.uid), {
+        valeur: choices,
+        date: new Date(),
+        userid: userr.uid
+      });
+      console.log("Choix ajouté dans Firebase ✅");
+      resetChoices();
+    } catch (error) {
+      console.error("Erreur Firebase ❌", error);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -100 }}
       transition={{ duration: 0.5 }}>
+      <h1> Pour obtenir le résultat de votre TEST veuillez vous connecter ou créer votre compte sinon </h1>
 
       <div className="BOX-general">
         <div className="BOX-container">
@@ -123,13 +151,14 @@ function CreationCompte() {
           }} />
 
           {!situation && <p style={{ color: 'red', fontSize: '0.9rem' }}>{message}</p>}
-          <Link to="/Map">
-            <button onClick={CreatUser}>Créer le compte</button>
-          </Link>
+          <button onClick={handleCreateAndSave}>Créer le compte</button>
+
         </div>
       </div>
     </motion.div>
   )
 }
+
+
 
 export default CreationCompte;

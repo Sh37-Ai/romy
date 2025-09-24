@@ -5,10 +5,25 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import './Reconnexion.css'
 import {Link} from "react-router-dom";
 import { motion } from 'framer-motion'
-
+import { useChoices } from '../ChoiceContext/ChoiceContext.tsx';
 function Reconnexion() {
   const [email,setEmail] = useState('');
   const [err,setError] = useState('');
+  const { choices, addChoice } = useChoices();
+
+  const Sauvgerder = async () => {
+    if (!choices) return;
+    try {
+      await addDoc(collection(db, "choixx"), {
+        valeur: choices,
+        date: new Date()
+      });
+      console.log("Choix ajouté dans Firebase ✅");
+      resetChoices();
+    } catch (error) {
+      console.error("Erreur Firebase ❌", error);
+    }
+  };
 
   const handleLogin = async() => {
       try{
